@@ -80,7 +80,6 @@ for line in f_final:
             except Exception as e:
                 print(f"Image failed. {submission.url.lower()}")
                 print(e)
-    print("***************************************")
     print("Nieuwe afbeeldingen in deze sub reddit:")
     print(count)
     print("***************************************")
