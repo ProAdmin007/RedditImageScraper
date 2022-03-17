@@ -50,7 +50,8 @@ for line in f_final:
     count = 0
     for submission in subreddit.new(limit=POST_SEARCH_AMOUNT):
         if "jpg" in submission.url.lower() or "png" in submission.url.lower():
-            print("Nieuwe afbeeldingen: " + count)
+            print("Nieuwe afbeeldingen:")
+            print(count)
             try:
                 resp = requests.get(submission.url.lower(), stream=True).raw
                 image = np.asarray(bytearray(resp.read()), dtype="uint8")
