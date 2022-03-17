@@ -42,6 +42,7 @@ reddit = praw.Reddit(client_id=creds['client_id'],
 
 f_final = open("sub_list.csv", "r")
 img_notfound = cv2.imread('imageNF.png')
+count1 = 0
 for line in f_final:
     sub = line.strip()
     subreddit = reddit.subreddit(sub)
@@ -49,8 +50,6 @@ for line in f_final:
     print(f"Starting {sub}!")
     count = 0
     for submission in subreddit.new(limit=POST_SEARCH_AMOUNT):
-        print("Nieuwe afbeeldingen:")
-        print(count)
         if "jpg" in submission.url.lower() or "png" in submission.url.lower():
             try:
                 resp = requests.get(submission.url.lower(), stream=True).raw
@@ -76,8 +75,17 @@ for line in f_final:
                 if not ignore_flag:
                     cv2.imwrite(f"{image_path}{sub}-{submission.id}.png", image)
                     count += 1
+                    count1 += 1
                     
             except Exception as e:
                 print(f"Image failed. {submission.url.lower()}")
                 print(e)
+    print("***************************************")
+    print("Nieuwe afbeeldingen in deze sub reddit:")
+    print(count)
+    print("***************************************")
+
+print("-------Totaal nieuw:-------")
+print(count1)
+print("---------------------------")
         
