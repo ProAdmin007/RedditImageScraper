@@ -7,7 +7,7 @@ import pickle
 
 from utils.create_token import create_token
 
-POST_SEARCH_AMOUNT = 5
+POST_SEARCH_AMOUNT = 100
 
 # Create directory if it doesn't exist to save images
 def create_folder(image_path):
@@ -18,7 +18,7 @@ def create_folder(image_path):
 
 # Path to save images
 dir_path = os.path.dirname(os.path.realpath(__file__))
-image_path = os.path.join(dir_path, "images/")
+image_path = os.path.join(dir_path, "/mnt/data/images/")
 ignore_path = os.path.join(dir_path, "ignore_images/")
 create_folder(image_path)
 
